@@ -18,7 +18,6 @@ import {
   NEW_MESSAGE,
   NEW_GAME,
   OPPONENT_LEFT,
-  initialState,
   INITIAL_MSG_NO_OPPONENT,
   INITIAL_MSG_HAVE_OPPONENT,
   MSG_HAVE_OPPONENT,
@@ -42,8 +41,24 @@ import {
   OPPONENT_SHOT,
   END,
 } from "../helpers/constants";
+//don't touch this
+const socket = io("http://localhost:4000", { transports : ['websocket'] });
 
-const socket = io("localhost:3001");
+const initialState = () => {
+  return {
+    gameState: 0,
+    shipTilesState: 0,
+    messages: [],
+    myShips: [],
+    myShipsShot: [],
+    opponentShips: null,
+    chosenTiles: [],
+    opponentShipsShot: [],
+    opponent: undefined,
+    gotInitialOpponent: false,
+    haveSendInitialMsg: false,
+  };
+};
 
 const useGame = () => {
   const reducers = {
@@ -152,7 +167,7 @@ const useGame = () => {
       const newOpponentShipsShot = opponentShipsShot.concat([coordinate]);
       const hasWon = isWinner(opponentShips, newOpponentShipsShot);
 
-      const msgType = hasWon ? "end" : "shot";
+      const msgType = hasWon ? "terminateSession" : "sendShot";
       const newGameState = hasWon ? 5 : 4;
       socket.emit(msgType, coordinate);
 
@@ -209,11 +224,11 @@ const useGame = () => {
       dispatch({ type: SET_OPPONENT_SHIPS, opponentShips });
     });
 
-    socket.on("shot", (coordinate) => {
+    socket.on("sendShot", (coordinate) => {
       dispatch({ type: OPPONENT_SHOT, coordinate });
     });
 
-    socket.on("end", (coordinate) => {
+    socket.on("terminateSession", (coordinate) => {
       dispatch({ type: OPPONENT_SHOT, coordinate });
       dispatch({ type: END });
     });
@@ -222,8 +237,8 @@ const useGame = () => {
       socket.off("connect");
       socket.off("opponent");
       socket.off("opponentShips");
-      socket.off("shot");
-      socket.off("end");
+      socket.off("sendShot");
+      socket.off("terminateSession");
     };
   }, []);
 
@@ -252,7 +267,7 @@ const useGame = () => {
         });
         break;
       case 2:
-        socket.emit("ships", myShips);
+        socket.emit("sendShips", myShips);
         if (opponentShips) return dispatch({ type: OPPONENTS_TURN });
         dispatch({ type: NEW_MESSAGE, message: MSG_OPPONENT_PLACING_SHIPS });
         break;
@@ -321,7 +336,7 @@ const useGame = () => {
 
   const newGame = () => {
     dispatch({ type: NEW_GAME });
-    socket.emit("newGame");
+    socket.emit("newSession");
   };
 
   const showOpponentOverlay =

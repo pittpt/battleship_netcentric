@@ -1,20 +1,20 @@
 import React from "react";
 import "./App.css";
-import Display from "./components/Display";
-import LogList from "./components/Log";
-import Heading from "./components/Heading";
+import View from "./components/Display";
 import useGame from "./hooks/useGame";
+import Log from "./components/Log";
 
 const App = () => {
   const { myState, opponentState, logState } = useGame();
 
   return (
     <>
-      <Heading />
-      <Display {...{ myState, opponentState }} />
-      <LogList {...logState} />
+      <View {...{ myState, opponentState }} />
+      <Log {...logState} />
     </>
   );
 };
 
 export default App;
+
+//don't touch this
