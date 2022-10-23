@@ -5,8 +5,8 @@ import {
   checkIfLstIncludesCoordinate,
   whichShipCoordinateIsBelong,
   findSinkShipNameOfCoordinate,
-} from "../../../../helpers/helpers";
-import { MISSED, SELECTED, CONFIRMED, HIT } from "../../../../helpers/constants";;
+} from "../../../../helpers";
+import { MISSED, SELECTED, CONFIRMED, HIT } from "../../../../constants";
 
 const CoordinateList = ({
   clickTile,

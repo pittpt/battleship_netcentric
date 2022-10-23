@@ -39,7 +39,7 @@ const client = (clients, socket, io) => {
   };
 
   const terminateSession = (position) => {
-    getSocketById(clients[socket.id]).emit("terminateSession", position);
+    getSocketById(clients[socket.id]).emit("end", position);
   };
 
   return { addClient, removeClient, newSession, terminateSession };

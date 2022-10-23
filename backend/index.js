@@ -2,7 +2,6 @@ import game from "./controllers/game.js";
 import client from "./controllers/client.js";
 import { Server } from "socket.io";
 
-
 const io = new Server({
   cors: {
     origin: ["http://localhost:4000"],
@@ -21,11 +20,14 @@ io.on("connection", (socket) => {
 
   addClient();
 
-  socket.on("newSession", newSession);
-  socket.on("terminateSession", terminateSession);
+  socket.on("newGame", newSession);
 
-  socket.on("sendShips", sendShips);
-  socket.on("sendhot", sendShot);
+  socket.on("ships", sendShips);
+
+  socket.on("shot", sendShot);
+
+  socket.on("end", terminateSession);
+
   socket.on("disconnect", removeClient);
 });
 
