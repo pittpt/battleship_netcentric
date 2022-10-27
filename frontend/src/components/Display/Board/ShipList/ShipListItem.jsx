@@ -1,6 +1,6 @@
 import React from "react";
 import "./ShipList.css";
-import { checkIfSink } from "../../../../helpers/helpers";
+import { checkIfSink } from "../../../../helpers";
 
 const ShipListItem = ({ ship: { name, coordinates }, shot }) => {
   const isSink = checkIfSink(coordinates, shot);

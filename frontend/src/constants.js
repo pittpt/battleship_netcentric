@@ -1,3 +1,5 @@
+import { getCurrentTime } from "./helpers";
+
 export const columnLabel = "ABCDEFGHIJ";
 
 export const NEW_OPPONENT = "NEW_OPPONENT";
@@ -45,4 +47,19 @@ export const ships = [
   { name: "Destroyer", numOfTiles: 2 },
 ];
 
-
+// initial state used in the hook useGame
+export const initialState = () => {
+  return {
+    gameState: 0,
+    shipTilesState: 0,
+    messages: [{ time: getCurrentTime(), message: "Welcome to Battleship!" }],
+    myShips: [],
+    myShipsShot: [],
+    opponentShips: null,
+    chosenTiles: [],
+    opponentShipsShot: [],
+    opponent: undefined,
+    gotInitialOpponent: false,
+    haveSendInitialMsg: false,
+  };
+};
