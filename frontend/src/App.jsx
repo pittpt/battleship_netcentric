@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import Display from "./Components/Display";
-import LogList from "./Components/Log";
-import Heading from "./Components/Heading";
+import Display from "./components/Display";
+import LogList from "./components/Log";
+import Heading from "./components";
 import useGame from "./hooks/useGame";
 
 const App = () => {
