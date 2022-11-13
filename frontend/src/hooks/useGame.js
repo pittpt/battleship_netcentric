@@ -43,7 +43,8 @@ import {
   END,
 } from "../constants";
 
-const socket = io("localhost:4000", { transports : ['websocket'] });
+const socket = io("http://172.20.10.4:4000", { transports : ['websocket'] });
+//const numOfUser = 0;
 const useGame = () => {
   const reducers = {
     [NEW_OPPONENT](state, { opponent }) {
@@ -198,6 +199,7 @@ const useGame = () => {
   useEffect(() => {
     socket.on("connect", () => {
       console.log("connected to server");
+
     });
 
     socket.on("opponent", (opponent) => {

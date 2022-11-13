@@ -38,6 +38,8 @@ export const MSG_WIN = "You Won!";
 export const MSG_LOSE = "You Lose.";
 export const MSG_OPPONENT_PLACING_SHIPS = "Opponent is placing ships...";
 export const MSG_ENTER_NEW_GAME = "[NEW GAME] You have entered a new game.";
+//fah
+//export const MSG_SERVER_INFO = "Server's IP address is ${name} and Server's Port number is ${name}"
 
 export const ships = [
   { name: "Carrier", numOfTiles: 5 },

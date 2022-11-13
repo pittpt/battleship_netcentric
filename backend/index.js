@@ -4,13 +4,15 @@ import { Server } from "socket.io";
 
 const io = new Server({
   cors: {
-    origin: ["http://localhost:4000"],
+    origin: ["http://172.20.10.4:4000"],
   },
 });
 
 const clients = {};
 
 io.on("connection", (socket) => {
+ 
+  
   const { sendShips, sendShot } = game(clients, socket, io);
   const { addClient, removeClient, newSession, terminateSession } = client(
     clients,
