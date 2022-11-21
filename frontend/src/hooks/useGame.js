@@ -43,7 +43,7 @@ import {
   END,
 } from "../constants";
 
-const socket = io("http://192.168.1.59:4000", { transports: ['websocket'] });
+const socket = io("http://124.120.118.80:4000", { transports: ["websocket"] });
 const useGame = () => {
   const reducers = {
     [NEW_OPPONENT](state, { opponent }) {
@@ -91,9 +91,9 @@ const useGame = () => {
       );
       const newChosenTiles = isSelected
         ? chosenTiles.filter(
-          (coordinate) =>
-            !checkIfSameCoordinate(coordinate, selectedCoordinate)
-        )
+            (coordinate) =>
+              !checkIfSameCoordinate(coordinate, selectedCoordinate)
+          )
         : chosenTiles.concat([selectedCoordinate]);
 
       return { ...state, chosenTiles: newChosenTiles };
@@ -233,8 +233,8 @@ const useGame = () => {
           ? MSG_HAVE_OPPONENT
           : INITIAL_MSG_HAVE_OPPONENT
         : haveSendInitialMsg
-          ? MSG_NO_OPPONENT
-          : INITIAL_MSG_NO_OPPONENT;
+        ? MSG_NO_OPPONENT
+        : INITIAL_MSG_NO_OPPONENT;
 
       dispatch({ type: NEW_MESSAGE, message });
       if (!opponent) dispatch({ type: OPPONENT_LEFT });
@@ -327,8 +327,8 @@ const useGame = () => {
     gameState === 0
       ? MSG_WAITING_FOR_PLAYER
       : !opponentShips
-        ? MSG_OPPONENT_PLACING_SHIPS
-        : null;
+      ? MSG_OPPONENT_PLACING_SHIPS
+      : null;
 
   const showMyOverlay =
     gameState === 5 ? MSG_WIN : gameState === 6 ? MSG_LOSE : null;
