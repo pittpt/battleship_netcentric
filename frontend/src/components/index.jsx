@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Heading = () => {
+const Heading = ({ title }) => {
+  const navigate = useNavigate();
   return (
-    <div className="heading">
-      <h1>[ Battleship ]</h1>
+    <div className="heading" style={{ cursor: 'pointer' }} onClick={() => navigate("/")}>
+      <h1>[ Battleship{(title) && title} ]</h1>
     </div>
   );
 };

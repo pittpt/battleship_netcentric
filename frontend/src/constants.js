@@ -39,6 +39,9 @@ export const MSG_LOSE = "You Lose.";
 export const MSG_OPPONENT_PLACING_SHIPS = "Opponent is placing ships...";
 export const MSG_ENTER_NEW_GAME = "[NEW GAME] You have entered a new game.";
 
+export const ADMIN_USER_NAME = "admin";
+export const ADMIN_USER_PASSWORD = "21232f297a57a5a743894a0e4a801fc3";
+
 export const ships = [
   { name: "Carrier", numOfTiles: 5 },
   { name: "Battleship", numOfTiles: 4 },
