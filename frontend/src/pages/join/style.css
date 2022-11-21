@@ -25,7 +25,7 @@
     font-size: 20px;
     font-weight: 400;
     padding: 10px;
-    color: #fca311;
+    color: #E8175D;
     border: 1px solid white;
     border-radius: 5px;
     background-color: transparent;
@@ -41,14 +41,15 @@
 }
 
 ::placeholder {
-    color: #fca311;
+    color: #E8175D;
 }
 
 .main-button {
+    font-family: "Press Start 2P";
     font-size: 20px;
     font-weight: 400;
     color: white;
-    background-color: #fca311;
+    background-color: #E8175D;
     border: none;
     border-radius: 5px;
     padding: 10px 30px;

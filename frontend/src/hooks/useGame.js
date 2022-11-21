@@ -43,7 +43,7 @@ import {
   END,
 } from "../constants";
 
-const socket = io("http://192.168.1.59:4000", { transports: ['websocket'] });
+const socket = io("http://localhost:4000", { transports: ['websocket'] });
 const useGame = () => {
   const reducers = {
     [NEW_OPPONENT](state, { opponent }) {
