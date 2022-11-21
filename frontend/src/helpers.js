@@ -1,7 +1,7 @@
-import moment from "moment";
-import { columnLabel } from "./constants";
+import moment from 'moment';
+import { columnLabel } from './constants';
 
-export const getCurrentTime = () => moment().format("LTS");
+export const getCurrentTime = () => moment().format('LTS');
 
 export const getLastElm = (arr) => {
   const length = arr.length;
@@ -93,15 +93,15 @@ export const makeMsgForSelectingTiles = (name, numOfTiles) => {
 
 export const makeMsgForSinkShip = (isMine, shipName) => {
   const [subject, object] = isMine
-    ? ["You", "opponent's"]
-    : ["Opponent", "your"];
+    ? ['You', "opponent's"]
+    : ['Opponent', 'your'];
   return `${subject} has sunk ${object} ${shipName}.`;
 };
 
 export const makeMsgForShot = (isMine, ships, coordinate) => {
   const isHit = whichShipCoordinateIsBelong(ships, coordinate);
-  const subject = isMine ? "You" : "Opponent";
-  const result = isHit ? "HIT!" : "MISSED.";
+  const subject = isMine ? 'You' : 'Opponent';
+  const result = isHit ? 'HIT!' : 'MISSED.';
   const { row, column } = coordinate;
   const columnLetter = columnLabel[column];
   const rowNum = row + 1;
@@ -122,3 +122,10 @@ export const validateShipTiles = (chosenTiles, var1, var2) => {
   }
   return true;
 };
+
+let yourName = '';
+export function setYourName(name) {
+  yourName = name;
+}
+
+export { yourName };
