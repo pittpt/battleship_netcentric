@@ -1,5 +1,5 @@
 .ship-list {
-  background-color: #fca311;
+  background-color: #363636;
   color: #ffffff;
   position: relative;
   text-align: center;
@@ -26,15 +26,25 @@
 }
 
 .ship-list button {
-  background-color: #14213d;
-  color: #e5e5e5;
-  padding: 0.5em;
-  border-radius: 10%;
+   font-size: 15px;
+    font-weight: 400;
+    color: white;
+    background-color: #E8175D;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em;
+   
 }
 
 .ship-list button.cancel {
-  background-color: #e5e5e5;
-  color: #14213d;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    background-color: #E8175D;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+
 }
 
 .ship-list button:first-child {
