@@ -1,69 +1,78 @@
 .welcome-page-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    height: 80%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 80%;
 }
 
 .welcome-page-title {
-    font-size: 30px;
-    font-weight: 700;
-    color: white;
+  font-size: 30px;
+  font-weight: 700;
+  color: white;
 }
 
 .welcome-page-banner-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
 .banner-loading-bar {
-    position: absolute;
+  position: absolute;
 }
 
 .click-here-label {
-    cursor: pointer;
-    font-size: 24px;
-    font-weight: 400;
-    color: #fca311;
-    visibility: hidden;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fca311;
+  visibility: hidden;
 }
 
 .click-here-label.show {
-    visibility: visible;
+  visibility: visible;
 }
 
 .click-here-label.show:hover {
-    color: white;
+  color: white;
 }
 
 .nav-admin-page {
-    position: absolute;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 400;
-    color: white;
-    text-decoration: underline;
-    top: 0;
-    visibility: hidden;
+  position: absolute;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  text-decoration: underline;
+  top: 0;
+  visibility: hidden;
 }
 
 .nav-admin-page.show {
-    visibility: visible;
+  visibility: visible;
 }
 
 .nav-admin-page.show:hover {
-    color: #fca311;
+  color: #fca311;
 }
 
 @media (max-width: 630px) {
-    .welcome-page-banner {
-        width: 90%;
-    }
+  .welcome-page-banner {
+    width: 100%;
+  }
+}
+
+body {
+  background-image: url("https://media4.giphy.com/media/eKP49SJAr0xVMX8Pxf/giphy.gif?cid=ecf05e470xr8x0cyjyhd8lww4vabk9lc1oofx1bjoqlbwo78&rid=giphy.gif&ct=g");
+  background-size: cover;
+
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }

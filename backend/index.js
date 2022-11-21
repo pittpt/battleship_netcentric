@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 
 const io = new Server({
   cors: {
-    origin: ["http://192.168.1.59:4000"],
+    origin: ["http://124.120.118.80:4000"],
   },
 });
 
