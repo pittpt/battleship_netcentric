@@ -5,7 +5,7 @@ const Heading = ({ title }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="heading"
+      className="heading "
       style={{ cursor: "pointer" }}
       onClick={() => navigate("/")}
     >

@@ -74,7 +74,8 @@
 
 body {
   background-image: url("https://avatars.mds.yandex.net/get-pdb/2835025/992ec243-0def-4b57-82ec-4247ec4075ea/orig");
-  background-size: cover;
+  background-size: 190vh;
+  background-position: -3.4em;
 
   height: 100vh;
   padding: 0;
