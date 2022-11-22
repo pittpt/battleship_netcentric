@@ -10,28 +10,31 @@
 }
 
 .welcome-page-title {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 700;
+  padding: 20px;
   color: white;
+  text-shadow: 4px 4px #e8175d;
 }
 
-.welcome-page-banner-container {
+/* .welcome-page-banner-container {
   position: relative;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-}
+} */
 
-.banner-loading-bar {
+/* .banner-loading-bar {
   position: absolute;
-}
+} */
 
 .click-here-label {
   cursor: pointer;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 400;
-  color: #fca311;
+  color: white;
   visibility: hidden;
 }
 
@@ -40,7 +43,7 @@
 }
 
 .click-here-label.show:hover {
-  color: white;
+  color: rgb(232, 23, 93);
 }
 
 .nav-admin-page {
@@ -48,8 +51,7 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 400;
-  color: white;
-  text-decoration: underline;
+  color: rgba(255, 255, 255, 0.5);
   top: 0;
   visibility: hidden;
 }
@@ -59,7 +61,7 @@
 }
 
 .nav-admin-page.show:hover {
-  color: #fca311;
+  color: rgb(232, 23, 93, 0.5);
 }
 
 @media (max-width: 630px) {
@@ -69,10 +71,12 @@
 }
 
 body {
-  background-image: url("https://media4.giphy.com/media/eKP49SJAr0xVMX8Pxf/giphy.gif?cid=ecf05e470xr8x0cyjyhd8lww4vabk9lc1oofx1bjoqlbwo78&rid=giphy.gif&ct=g");
-  background-size: cover;
-
-  height: 100vh;
-  padding: 0;
+  min-height: 100%;
   margin: 0;
+  box-shadow: inset 0 0 0 1000px rgba(52, 35, 45, 0.5);
+  background-image: url("https://media4.giphy.com/media/bZBmitwUwKtDa/giphy.gif?cid=ecf05e472a9slebt6at3p403rm8ruhowh34lev5f3esl6e3g&rid=giphy.gif&ct=g");
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }

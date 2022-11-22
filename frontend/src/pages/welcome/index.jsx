@@ -23,7 +23,7 @@ const WelcomePage = () => {
   };
   return (
     <div className="welcome-page-container">
-      <p className="welcome-page-title">Welcome to Battle Ship War</p>
+      <p className="welcome-page-title">Welcome to Battle Ship</p>
       <div className="welcome-page-banner-container">
         {loadingFlag && (
           <ClipLoader color="white" className="banner-loading-bar" />
