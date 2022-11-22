@@ -1,4 +1,4 @@
-body{
+body {
   font-family: "Libre Baskerville";
   margin: 0;
   padding-top: 2em;
@@ -34,8 +34,6 @@ body * {
 .board,
 .logs {
   background-color: #e5e5e5;
-
-
 }
 
 .heading {
@@ -43,6 +41,5 @@ body * {
   border-radius: 1em;
   padding: 0 1.5em;
   letter-spacing: 1em;
- text-shadow: 2px 2px #E8175D;
+  text-shadow: 2px 2px #e8175d;
 }
-

@@ -12,7 +12,7 @@ const LogList = ({ messages }) => {
 
   return (
     <div className="log-display">
-      <div className="logs" ref={log}>
+      <div className="logs"  style={{color : 'white'}} ref={log}>
         {elms}
       </div>
     </div>

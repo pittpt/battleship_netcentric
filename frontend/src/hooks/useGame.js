@@ -43,7 +43,7 @@ import {
   END,
 } from "../constants";
 
-const socket = io("http://124.120.118.80:4000", { transports: ["websocket"] });
+const socket = io("http://localhost:4000", { transports: ["websocket"] });
 const useGame = () => {
   const reducers = {
     [NEW_OPPONENT](state, { opponent }) {
@@ -360,7 +360,7 @@ const useGame = () => {
     myBoard: true,
     placedShips: myShips,
     overlaySettings: showMyOverlay,
-    title: "Your Board",
+    title: "My Board",
     showConfirmCancelButtons,
     clearTiles,
     clickTile: clickTile(true),
