@@ -4,7 +4,7 @@
   text-align: center;
   z-index: 1;
     background-color: rgba(232,23,93,0.1);
-    border: 0.1em solid black;
+    border: 0.1em solid rgb(255, 255, 255);
 
 }
 
@@ -22,15 +22,18 @@
 .overlay {
   position: absolute;
   display: none;
-  width: calc(100% - 3em);
+  width: calc(100% - 4.7em);
   height: 100%;
   top: 0;
-  border-radius: 1.5em;
+  border-radius: 2.2em;
   background-color: rgba(6, 5, 5, 0.7);
   z-index: 2;
   align-items: center;
   justify-content: center;
   color: #ffffff;
+  font-size: 10px;
+  text-shadow: 2px 2px #E8175D;
+
 }
 
 .display .whole-board:first-child .overlay {

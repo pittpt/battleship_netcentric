@@ -2,20 +2,18 @@
   background-color: #363636;
   color: #ffffff;
   position: relative;
-  text-align:center;
+  text-align: center;
   min-width: 8em;
   display: flex;
-  flex-direction: column; 
-  justify-content:space-between;
-    margin: 0em 1.7em ;
-
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0em 1.7em;
 }
 
 .ship-list > div > div {
   margin: 1.5em 0;
   display: flex;
   /* justify-content:space-evenly; */
-
 }
 
 .display .ship-list:first-child {
@@ -31,23 +29,25 @@
 }
 
 .ship-list button {
-       font-size: 15px;
-    font-weight: 400;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    background-color:#E8175D;
+  font-family: "Press Start 2P";
+  font-size: 10px;
+  font-weight: 400;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  background-color: #e8175d;
 }
 
 .ship-list button.cancel {
-         font-size: 15px;
-    font-weight: 400;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px ;
-    background-color:#E8175D;
+  font-family: "Press Start 2P";
+  font-size: 10px;
+  font-weight: 400;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #e8175d;
 }
 
 .ship-list button:first-child {
@@ -55,6 +55,7 @@
 }
 
 .ship-name {
+  font-size: 0.8em;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -64,7 +65,7 @@
 .label {
   width: 1em;
   height: 1em;
-  margin-right: 0.3em;
+  margin-right: 0.6em;
   border: 0.1em solid #fff;
 }
 
