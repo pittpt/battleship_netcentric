@@ -1,15 +1,17 @@
 .log-display {
-  border: 0.5em solid #fca311;
+  border: 0.5em solid #E8175D;
   width: 100%;
   height: 20%;
-  background-color: #e5e5e5;
-  display: flex;
+  background-color: #646363;
+  border-radius: 2em;
+   display: flex;
 }
 
 .logs {
   width: 100%;
-  padding: 0 1em 0 0.8em;
-  background-color: #e5e5e5;
+  padding: 0.2em 1em 0 1.3em;
+  background-color: #646363;
   overflow-y: scroll;
-  border: 0.13em solid #14213d;
+  border-radius: 2em;
+  font-size: 0.9em;
 }

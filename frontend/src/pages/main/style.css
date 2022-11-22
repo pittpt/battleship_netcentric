@@ -1,14 +1,17 @@
 body {
-  font-family: "Libre Baskerville";
+  font-family: 'Press Start 2P';
   margin: 0;
   padding-top: 2em;
   /* width: 100vw; */
   height: 100vh;
- background-image: linear-gradient(#E8175D,#474747 , #474747 );
-  /* background-image: url("https://media4.giphy.com/media/eKP49SJAr0xVMX8Pxf/giphy.gif?cid=ecf05e470xr8x0cyjyhd8lww4vabk9lc1oofx1bjoqlbwo78&rid=giphy.gif&ct=g"); */
+  /* background-image: linear-gradient(#E8175D,#474747 , #474747 ); */
+  background-image: url('https://media4.giphy.com/media/eKP49SJAr0xVMX8Pxf/giphy.gif?cid=ecf05e470xr8x0cyjyhd8lww4vabk9lc1oofx1bjoqlbwo78&rid=giphy.gif&ct=g');
+  /* background:linear-gradient(30deg, rgba(121, 0, 0, 0.8), rgba(190, 0, 111, 0.5)), url("https://media4.giphy.com/media/eKP49SJAr0xVMX8Pxf/giphy.gif?cid=ecf05e470xr8x0cyjyhd8lww4vabk9lc1oofx1bjoqlbwo78&rid=giphy.gif&ct=g"); */
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px rgba(52, 35, 45, 0.5);
+
   user-select: none;
   background-size: cover;
-  background-blend-mode: luminosity;
 }
 body * {
   opacity: 1;
@@ -37,5 +40,7 @@ body * {
   color: #ffffff;
   border-radius: 1em;
   padding: 0 1.5em;
-  letter-spacing: 0.5em;
+  margin-top: 1.5em;
+  letter-spacing: 1em;
+  text-shadow: 2px 2px #e8175d;
 }

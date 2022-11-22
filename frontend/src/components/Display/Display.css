@@ -1,14 +1,14 @@
-h1,
+h1,h4,
 h3 {
-  font-family: "Fjalla One";
+  font-family: "Press Start 2P";
   text-transform: uppercase;
 }
 
 .display {
   display: flex;
   width: 100%;
-  justify-content: center;
-  gap: 50px;
+  justify-content: space-evenly;
+  gap: 20px;
 }
 
 .display > div {

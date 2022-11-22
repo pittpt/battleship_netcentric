@@ -360,7 +360,7 @@ const useGame = () => {
     myBoard: true,
     placedShips: myShips,
     overlaySettings: showMyOverlay,
-    title: "Your Board",
+    title: "My Board",
     showConfirmCancelButtons,
     clearTiles,
     clickTile: clickTile(true),

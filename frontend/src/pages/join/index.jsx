@@ -52,17 +52,17 @@ const JoinPageForms = () => {
     setWaitingFlag(!waitingFlag);
     newGame();
   };
-
   return (
     <div className="join-page-container">
       <Heading />
       {!waitingFlag ? (
         <div className="page-content-tab-wrapper">
-          {/* <p className='player-status-label'>Overall Online Player: {playerName}</p> */}
+          <p className="player-status-label">{playerName}'s ship</p>
           <p className="label-content">Enter Your Name:</p>
           <input
+            style={{ fontFamily: 'Press Start 2P' }}
             type="text"
-            placeholder="Enter your name..."
+            placeholder="..."
             className="player-name-input"
             onKeyDown={(e) => {
               handleWaitingFlagByKey(e);
@@ -78,7 +78,7 @@ const JoinPageForms = () => {
         <div className="page-content-tab-wrapper">
           <p className="player-status-label">Welcome, {playerName}</p>
           <p className="label-content">{MSG_WAITING_FOR_PLAYER}</p>
-          <ClipLoader color="white" />
+          <ClipLoader color="#e8175d" />
           <button className="main-button" onClick={() => handleWaitingFlag()}>
             Back
           </button>
