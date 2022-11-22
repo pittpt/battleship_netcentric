@@ -25,13 +25,14 @@
 
 .banner-loading-bar {
   position: absolute;
+  margin-top: 3em;
 }
 
 .click-here-label {
   cursor: pointer;
   font-size: 24px;
   font-weight: 400;
-  color: #fca311;
+  color: #fff;
   visibility: hidden;
 }
 
@@ -40,7 +41,7 @@
 }
 
 .click-here-label.show:hover {
-  color: white;
+  color: #E8175D;
 }
 
 .nav-admin-page {
@@ -48,7 +49,7 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 400;
-  color: white;
+  color: #363636;
   text-decoration: underline;
   top: 0;
   visibility: hidden;
@@ -59,7 +60,7 @@
 }
 
 .nav-admin-page.show:hover {
-  color: #fca311;
+  color: #E8175D;
 }
 
 @media (max-width: 630px) {

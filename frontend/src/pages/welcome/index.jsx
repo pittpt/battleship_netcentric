@@ -5,6 +5,12 @@ import { useNavigate } from "react-router-dom";
 import "./style.css";
 import bannerImg from "../../assets/img/battleship_war_banner.jpg";
 import backgroundGif from "../../assets/img/giphy.gif";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlay ,
+ 
+} from "@fortawesome/free-solid-svg-icons";
+
 
 const WelcomePage = () => {
   const [loadingFlag, setLoadingFlag] = useState(true);
@@ -26,20 +32,20 @@ const WelcomePage = () => {
       <p className="welcome-page-title">Welcome to Battle Ship War</p>
       <div className="welcome-page-banner-container">
         {loadingFlag && (
-          <ClipLoader color="white" className="banner-loading-bar" />
+          <ClipLoader color="#E8175D" className="banner-loading-bar " />
         )}
       </div>
       <p
         className={`click-here-label ${!loadingFlag && "show"}`}
         onClick={() => handleNavigate()}
       >
-        Click here to play...
+        Click here to play... <FontAwesomeIcon icon={faPlay} />
       </p>
       <p
         className={`nav-admin-page ${!loadingFlag && "show"}`}
         onClick={() => handleAdminPage()}
       >
-        Admin...
+        for Admin
       </p>
     </div>
   );
