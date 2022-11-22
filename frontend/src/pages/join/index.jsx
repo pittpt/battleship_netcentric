@@ -55,8 +55,9 @@ const JoinPageForms = () => {
           <p className="player-status-label">{playerName}'s ship</p>
           <p className="label-content">Enter Your Name:</p>
           <input
+            style={{ fontFamily: "Press Start 2P" }}
             type="text"
-            placeholder="Enter your name..."
+            placeholder="..."
             className="player-name-input"
             onKeyDown={(e) => {
               handleWaitingFlagByKey(e);

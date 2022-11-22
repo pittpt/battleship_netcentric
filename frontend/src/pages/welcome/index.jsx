@@ -39,7 +39,7 @@ const WelcomePage = () => {
         className={`click-here-label ${!loadingFlag && "show"}`}
         onClick={() => handleNavigate()}
       >
-        Click here to play... <FontAwesomeIcon icon={faPlay} />
+        Click here to play <FontAwesomeIcon icon={faPlay} />
       </p>
       <p
         className={`nav-admin-page ${!loadingFlag && "show"}`}
