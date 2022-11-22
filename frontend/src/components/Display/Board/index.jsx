@@ -25,8 +25,9 @@ const Board = ({ state }) => {
 
   const coordinate = (
     <div className={boardClass}>
-      <h4 style={{ color: 'white' }}>{title}</h4>
-      <p>{yourName}</p>
+      <h4 style={{ color: 'white' }}>
+        {title === 'My Board' && yourName ? `${yourName}'s board` : title}
+      </h4>
       <Coordinate {...{ placedShips, clickTile, chosenTiles, shot, myBoard }} />
     </div>
   );
