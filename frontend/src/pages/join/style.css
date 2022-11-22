@@ -1,5 +1,6 @@
 .join-page-container {
     text-align: center;
+    margin: 6em;
 }
 
 .page-content-tab-wrapper {
@@ -46,13 +47,13 @@
 
 .main-button {
     font-family: "Press Start 2P";
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 400;
     color: white;
     background-color: #e8175d;
     border: none;
     border-radius: 5px;
-    padding: 10px 30px;
+    padding: 15px 36px;
     margin-top: 70px;
 }
 

@@ -49,7 +49,7 @@ const JoinPageForms = () => {
         {!waitingFlag ? (
           <div className="page-content-tab-wrapper">
             <p className="player-status-label">
-              Overall Online Player: {playerName}
+              {playerName}'s ship
             </p>
             <p className="label-content">Enter Your Name:</p>
             <input

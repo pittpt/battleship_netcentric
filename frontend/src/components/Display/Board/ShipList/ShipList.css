@@ -1,11 +1,12 @@
 .ship-list {
-  background-color: #363636;
+  background-color: rgb(128, 128, 128,0);
   color: #ffffff;
   position: relative;
   text-align: center;
-  min-width: 8em;
+  min-width: 7.5em;
   display: flex;
   flex-direction: column;
+  /* border: 0.5px solid #da2864; */
   justify-content: space-between;
   margin: 0em 1.7em;
 }
