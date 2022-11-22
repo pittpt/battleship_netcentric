@@ -28,13 +28,14 @@
 
 /* .banner-loading-bar {
   position: absolute;
-} */
+  margin-top: 3em;
+}
 
 .click-here-label {
   cursor: pointer;
   font-size: 30px;
   font-weight: 400;
-  color: white;
+  color: #fff;
   visibility: hidden;
 }
 
@@ -43,7 +44,7 @@
 }
 
 .click-here-label.show:hover {
-  color: rgb(232, 23, 93);
+  color: #E8175D;
 }
 
 .nav-admin-page {
@@ -51,7 +52,8 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.5);
+  color: #363636;
+  text-decoration: underline;
   top: 0;
   visibility: hidden;
 }
@@ -61,7 +63,7 @@
 }
 
 .nav-admin-page.show:hover {
-  color: rgb(232, 23, 93, 0.5);
+  color: #E8175D;
 }
 
 @media (max-width: 630px) {
@@ -71,7 +73,11 @@
 }
 
 body {
-  min-height: 100%;
+  background-image: url("https://avatars.mds.yandex.net/get-pdb/2835025/992ec243-0def-4b57-82ec-4247ec4075ea/orig");
+  background-size: cover;
+
+  height: 100vh;
+  padding: 0;
   margin: 0;
   box-shadow: inset 0 0 0 1000px rgba(52, 35, 45, 0.5);
   background-image: url("https://media4.giphy.com/media/bZBmitwUwKtDa/giphy.gif?cid=ecf05e472a9slebt6at3p403rm8ruhowh34lev5f3esl6e3g&rid=giphy.gif&ct=g");

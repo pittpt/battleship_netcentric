@@ -23,7 +23,7 @@ const Board = ({ state }) => {
 
   const coordinate = (
     <div className={boardClass}>
-      <h3>{title}</h3>
+      <h4 style={{color : 'white'}}>{title}</h4>
       <Coordinate {...{ placedShips, clickTile, chosenTiles, shot, myBoard }} />
     </div>
   );

@@ -5,6 +5,7 @@
     background: transparent;
     display: flex;
     flex-direction: column;
+    margin : 0em 2em 0em 0em;
 }
 
 .game-status-wrapper {
@@ -39,4 +40,5 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
+    background-color:#E8175D;
 }
