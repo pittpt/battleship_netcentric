@@ -18,12 +18,14 @@ const ShipList = ({
     lst.push(<ShipListItem {...{ ship, shot, key: index }} />);
   }
   return (
-    <div className={className}>
-      <div>{lst}</div>
-      {showConfirmCancelButtons && (
-        <TileButtons {...{ clearTiles, confirmTiles }} />
-      )}
-    </div>
+
+      <div className={className}>
+        <div>{lst}</div>
+        {showConfirmCancelButtons && (
+          <TileButtons {...{ clearTiles, confirmTiles }} />
+        )}
+      </div>
+  
   );
 };
 

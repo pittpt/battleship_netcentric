@@ -5,16 +5,19 @@
   background: transparent;
   display: flex;
   flex-direction: column;
+  margin-right: 2em;
 }
 
 .game-status-wrapper {
   border: 1px solid white;
-  background: #e5e5e5;
+  border-radius: 0.5em;
+  background: rgba(54, 54, 54, 0.2);
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex: auto;
+  color: #fff;
 }
 
 .game-status-items-wrapper {
@@ -43,6 +46,6 @@
 }
 
 .main-button.new-game:active {
-  box-shadow: 0 5px #666;
+  box-shadow: 0 5px rgb(255, 255, 255);
   transform: translateY(4px);
 }

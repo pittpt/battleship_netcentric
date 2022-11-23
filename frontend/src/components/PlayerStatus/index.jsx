@@ -14,7 +14,7 @@ const PlayerStatus = ({ isPlayerOneOnline, isPlayerTwoOnline }) => {
             }}
         >
             <div>
-                <Dot isOnline={isPlayerOneOnline} />
+                <Dot  isOnline={isPlayerOneOnline} />
                 player 1
             </div>
             <div>
