@@ -8,7 +8,7 @@ const Display = ({ myState, opponentState, newGame }) => {
     <div className="display">
       <Board state={myState} />
       <Board state={opponentState} />
-      <StatusBoard {...{ newGame }} />
+      <StatusBoard {...{ newGame, myState }} />
     </div>
   );
 };

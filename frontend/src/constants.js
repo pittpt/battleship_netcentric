@@ -14,6 +14,11 @@ export const SET_OPPONENT_SHIPS = "SET_OPPONENT_SHIPS";
 export const OPPONENTS_TURN = "OPPONENTS_TURN";
 export const SHOT = "SHOT";
 export const OPPONENT_SHOT = "OPPONENT_SHOT";
+export const UPDATE_OVERALL_PLAYER = "UPDATE_OVERALL_PLAYER";
+export const SCORE = "SCORE";
+export const MY_TURN = "MY_TURN";
+export const EMOJI = "EMOJI";
+export const RESET_SCORE = "RESET_SCORE";
 export const END = "END";
 
 export const MISSED = "MISSED";
@@ -38,6 +43,7 @@ export const MSG_WIN = "You Won!";
 export const MSG_LOSE = "You Lose.";
 export const MSG_OPPONENT_PLACING_SHIPS = "Opponent is placing ships...";
 export const MSG_ENTER_NEW_GAME = "[NEW GAME] You have entered a new game.";
+export const MSG_RANDOM_PLAYER = "Randomly picked first player...";
 
 export const ADMIN_USER_NAME = "admin";
 export const ADMIN_USER_PASSWORD = "21232f297a57a5a743894a0e4a801fc3";
@@ -64,5 +70,11 @@ export const initialState = () => {
     opponent: undefined,
     gotInitialOpponent: false,
     haveSendInitialMsg: false,
+    overallPlayer: [],
+    opponentName: null,
+    name: null,
+    opponentScore: 0,
+    emojiId: 1,
+    score: 0,
   };
 };

@@ -9,26 +9,72 @@ const io = new Server({
 });
 
 const clients = {};
+const clientNames = {};
+const scores = {};
+const boardStatus = {};
+
+let resetScoreGlobal = () => {
+  console.log("resetScore");
+};
 
 io.on("connection", (socket) => {
-  const { sendShips, sendShot } = game(clients, socket, io);
-  const { addClient, removeClient, newSession, terminateSession } = client(
-    clients,
-    socket,
-    io
-  );
+  const {
+    sendShips,
+    sendShot,
+    addScore,
+    randomPlayer,
+    updateBoard,
+    sendEmoji,
+    resetScore,
+  } = game(clients, socket, io, scores, clientNames, boardStatus);
+  resetScoreGlobal = resetScore;
+  const {
+    addClient,
+    removeClient,
+    newSession,
+    terminateSession,
+    updateOverallPlayer,
+  } = client(clients, socket, io, clientNames, scores);
 
-  addClient();
+  try {
+    addClient();
 
-  socket.on("newGame", newSession);
+    socket.on("newGame", newSession);
 
-  socket.on("ships", sendShips);
+    socket.on("players", updateOverallPlayer);
 
-  socket.on("shot", sendShot);
+    socket.on("ready", randomPlayer);
 
-  socket.on("end", terminateSession);
+    socket.on("ships", sendShips);
 
-  socket.on("disconnect", removeClient);
+    socket.on("shot", sendShot);
+
+    socket.on("board", updateBoard);
+
+    socket.on("win", addScore);
+
+    socket.on("emoji", sendEmoji);
+
+    socket.on("end", terminateSession);
+
+    socket.on("disconnect", removeClient);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+io.of("/admin").on("connection", (socket) => {
+  const interval = setInterval(() => {
+    socket.emit("admin", boardStatus, scores, clients, clientNames);
+  }, 1000);
+
+  socket.on("reset", () => {
+    resetScoreGlobal(scores);
+  });
+
+  socket.on("disconnect", () => {
+    clearInterval(interval);
+  });
 });
 
 io.listen(4000);

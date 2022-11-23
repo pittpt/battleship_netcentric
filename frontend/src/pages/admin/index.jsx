@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ToastProvider, useToasts } from "react-toast-notifications";
 import MD5 from "md5";
-import Heading from "../../components";
+import Heading from "../../components/Heading";
 import AdminPageComponent from "../../components/Admin";
 import { ADMIN_USER_NAME, ADMIN_USER_PASSWORD } from "../../constants";
 import "./style.css";

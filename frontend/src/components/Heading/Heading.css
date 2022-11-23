@@ -1,0 +1,14 @@
+.heading {
+  color: #ffffff;
+  border-radius: 1em;
+  padding: 0 1.5em;
+  letter-spacing: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.heading h3 {
+  font-size: 1.5em;
+  color: gray;
+}

@@ -1,44 +1,42 @@
 .game-status-container {
-  border: 1px solid white;
-  border-radius: 20px;
-  padding: 10px;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  margin: 0em 3em 0em -4em;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 20px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
 }
 
 .game-status-wrapper {
-  border: 1px solid white;
-  background: #e5e5e5;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: auto;
+    border: 1px solid white;
+    background: #e5e5e5;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: auto;
 }
 
 .game-status-items-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
 }
 
 .emoji-span {
-  font-size: 24px;
-  padding: 2px;
-  opacity: 0.2;
-  transition: all 0.2s ease-in-out;
+    font-size: 24px;
+    padding: 2px;
+    opacity: 0.2;
+    transition: all 0.2s ease-in-out;
 }
 
 .emoji-span.active {
-  opacity: 1;
-  transition: all 0.2s ease-in-out;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
 }
 
 .main-button.new-game {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  background-color: #e8175d;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }

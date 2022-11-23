@@ -1,0 +1,21 @@
+.name-and-timer {
+  display: flex;
+
+  padding: 0 40px;
+  align-items: baseline;
+  color: #fff;
+  margin-bottom: -10px;
+  margin-top: -10px;
+}
+
+.mine {
+  justify-content: flex-start;
+}
+
+.opponent {
+  justify-content: flex-end;
+}
+
+.timer {
+  justify-content: space-between;
+}

@@ -13,110 +13,16 @@ import discoveredShipImg2 from '../../assets/img/discovered_ship2.png';
 import discoveredShipImg3 from '../../assets/img/discovered_ship3.png';
 import discoveredShipImg4 from '../../assets/img/discovered_ship4.png';
 import discoveredShipImg5 from '../../assets/img/discovered_ship5.png';
+import useAdmin from "../../hooks/useAdmin";
 import './style.css';
+import Coordinate from "../Display/Board/Coordinate";
 
 const AdminPageComponent = () => {
-    const [selRoomNum, setSelRoomNum] = useState(0);
-    const shipInfos = [
-        {
-            discovered: discoveredShipImg1,
-            nondiscovered: shipImg1
-        },
-        {
-            discovered: discoveredShipImg2,
-            nondiscovered: shipImg2
-        },
-        {
-            discovered: discoveredShipImg3,
-            nondiscovered: shipImg3
-        },
-        {
-            discovered: discoveredShipImg4,
-            nondiscovered: shipImg4
-        },
-        {
-            discovered: discoveredShipImg5,
-            nondiscovered: shipImg5
-        }
-    ];
-    const roomData = [
-        {
-            id: 1,
-            time: '2022-11-14',
-            playerInfos: [
-                {
-                    playerId: 1,
-                    playerName: 'ploy',
-                    score: 100,
-                    playerPanel: playerPanelImg1,
-                    discoveredShip: [false, false, true, false, true]
-                },
-                {
-                    playerId: 2,
-                    playerName: 'tiny',
-                    score: 200,
-                    playerPanel: playerPanelImg2,
-                    discoveredShip: [true, true, false, false, false]
-                }
-            ]
-        },
-        {
-            id: 2,
-            time: '2022-11-15',
-            playerInfos: [
-                {
-                    playerId: 1,
-                    playerName: 'jimmy',
-                    score: 150,
-                    playerPanel: playerPanelImg1,
-                    discoveredShip: [false, true, true, false, true]
-                },
-                {
-                    playerId: 2,
-                    playerName: 'marina',
-                    score: 100,
-                    playerPanel: playerPanelImg2,
-                    discoveredShip: [false, false, true, false, true]
-                }
-            ]
-        }
-    ];
-    const handleSelRoomNum = (event) => {
-        setSelRoomNum(event.target.value);
-    }
+    const { adminSyncState, reset } = useAdmin();
     return (
         <div className="admin-page-container">
-            <div className="room-number-container">
-                <p className="room-number-lablel">Room Number</p>
-                <div className="room-number-group">
-                    <select className="room-number-option" value={selRoomNum} onChange={(e) => handleSelRoomNum(e)}>
-                        {roomData.map((item, i) => <option key={i} value={i} >{item.id}</option>)}
-                    </select>
-                </div>
-            </div>
-            <div className="room-time-label-container">
-                <p className="room-time-label">{roomData[selRoomNum].time}</p>
-                <MdClose className="room-time-close" />
-            </div>
-            <div className="room-info-container">
-                {
-                    roomData[selRoomNum].playerInfos.map((item, i) => {
-                        return (
-                            <div key={i} className="player-status-container">
-                                <div className="player-item-title-container">
-                                    <p className="player-item-name">{item.playerName}</p>
-                                    <p className="player-item-score">Score: {item.score}</p>
-                                </div>
-                                <Image src={item.playerPanel} />
-                                <div className="discovered-ship-status">
-                                    {roomData[selRoomNum].playerInfos[i].discoveredShip.map((statusItem, j) => <Image style={{ padding: '5px 0' }} key={j} src={statusItem ? shipInfos[j].discovered : shipInfos[j].nondiscovered} />)}
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-            <button className='main-button danger'>Reset Game</button>
+            <p className="user-online">{Object.keys(adminSyncState.clients ?? {})?.length} Users online now</p>
+            <button onClick={reset} className='main-button danger'>Reset Game</button>
         </div>
     )
 }

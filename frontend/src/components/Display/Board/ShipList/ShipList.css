@@ -1,54 +1,40 @@
 .ship-list {
-  background-color: rgb(128, 128, 128, 0);
+  background-color: #fca311;
   color: #ffffff;
   position: relative;
   text-align: center;
-  min-width: 7.5em;
+  min-width: 8em;
   display: flex;
   flex-direction: column;
-  /* border: 0.5px solid #da2864; */
   justify-content: space-between;
-  margin: 0em 1.7em;
 }
 
 .ship-list > div > div {
-  margin: 1.5em 0;
-  display: flex;
-  /* justify-content:space-evenly; */
+  margin: 2em 0;
 }
 
 .display .ship-list:first-child {
   left: 1.5em;
-  padding: 1em 1em 1em 1em;
-  border-radius: 1em 1em 1em 1em;
+  padding: 1em 2.5em 1em 1em;
+  border-radius: 1.5em 0 0 1.5em;
 }
 
 .display .ship-list:nth-child(2) {
   right: 1.5em;
-  padding: 1em 1em 1em 1em;
-  border-radius: 1em 1em 1em 1em;
+  padding: 1em 1em 1em 2.5em;
+  border-radius: 0 1.5em 1.5em 0;
 }
 
 .ship-list button {
-  font-family: 'Press Start 2P';
-  font-size: 10px;
-  font-weight: 400;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  background-color: #e8175d;
+  background-color: #14213d;
+  color: #e5e5e5;
+  padding: 0.5em;
+  border-radius: 10%;
 }
 
 .ship-list button.cancel {
-  font-family: 'Press Start 2P';
-  font-size: 10px;
-  font-weight: 400;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  background-color: #e8175d;
+  background-color: #e5e5e5;
+  color: #14213d;
 }
 
 .ship-list button:first-child {
@@ -56,7 +42,6 @@
 }
 
 .ship-name {
-  font-size: 0.8em;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -66,24 +51,24 @@
 .label {
   width: 1em;
   height: 1em;
-  margin-right: 0.6em;
+  margin-right: 0.3em;
   border: 0.1em solid #fff;
 }
 
 .label:first-child {
-  background-color: #33a9ac;
+  background-color: #264653;
 }
 
 .ship-name:nth-child(2) .label {
-  background-color: #da2864;
+  background-color: #2a9d8f;
 }
 
 .ship-name:nth-child(3) .label {
-  background-color: #f7ad19;
+  background-color: #e9c46a;
 }
 
 .ship-name:nth-child(4) .label {
-  background-color: #982062;
+  background-color: #f4a261;
 }
 
 .ship-name:nth-child(5) .label {

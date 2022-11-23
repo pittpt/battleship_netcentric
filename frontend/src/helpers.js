@@ -1,7 +1,7 @@
-import moment from 'moment';
-import { columnLabel } from './constants';
+import moment from "moment";
+import { columnLabel } from "./constants";
 
-export const getCurrentTime = () => moment().format('LTS');
+export const getCurrentTime = () => moment().format("LTS");
 
 export const getLastElm = (arr) => {
   const length = arr.length;
@@ -24,6 +24,10 @@ export const checkIfLstIncludesCoordinate = (
   coordinates,
   checkedCoordinate
 ) => {
+  if (checkedCoordinate.row < 0 && checkedCoordinate.column < 0) {
+    return false;
+  }
+
   for (const coordinate of coordinates) {
     const coordinateFound = checkIfSameCoordinate(
       coordinate,
@@ -39,6 +43,14 @@ export const checkIfSink = (coordinates, shot) => {
     if (!isHit) return;
   }
   return true;
+};
+
+export const checkIfHit = (ships, shot) => {
+  for (const ship of ships) {
+    const isHit = checkIfLstIncludesCoordinate(ship.coordinates, shot);
+    if (isHit) return true;
+  }
+  return false;
 };
 
 export const isWinner = (ships, shot) => {
@@ -93,16 +105,17 @@ export const makeMsgForSelectingTiles = (name, numOfTiles) => {
 
 export const makeMsgForSinkShip = (isMine, shipName) => {
   const [subject, object] = isMine
-    ? ['You', "opponent's"]
-    : ['Opponent', 'your'];
+    ? ["You", "opponent's"]
+    : ["Opponent", "your"];
   return `${subject} has sunk ${object} ${shipName}.`;
 };
 
 export const makeMsgForShot = (isMine, ships, coordinate) => {
   const isHit = whichShipCoordinateIsBelong(ships, coordinate);
-  const subject = isMine ? 'You' : 'Opponent';
-  const result = isHit ? 'HIT!' : 'MISSED.';
+  const subject = isMine ? "You" : "Opponent";
+  const result = isHit ? "HIT!" : "MISSED.";
   const { row, column } = coordinate;
+  if (row < 0 || column < 0) return `${subject} timeout!`;
   const columnLetter = columnLabel[column];
   const rowNum = row + 1;
   return `${subject} just shot at ${columnLetter}${rowNum}: ${result}`;
@@ -123,9 +136,6 @@ export const validateShipTiles = (chosenTiles, var1, var2) => {
   return true;
 };
 
-let yourName = '';
-export function setYourName(name) {
-  yourName = name;
-}
-
-export { yourName };
+export const getWinnerOrLoserMsg = (isWinner, name) => {
+  return `${name} ${isWinner ? "Win!" : "Lose"}!`;
+};

@@ -3,7 +3,7 @@ import React from "react";
 const NewGameButton = ({ newGame }) => {
   return (
     <>
-      <button className="main-button new-game" onClick={newGame}>New Game</button>
+      <button className="main-button new-game" onClick={() => newGame(null)}>New Game</button>
     </>
   );
 };

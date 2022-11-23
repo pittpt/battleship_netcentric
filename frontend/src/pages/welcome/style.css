@@ -1,87 +1,69 @@
 .welcome-page-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  height: 80%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 80%;
 }
 
 .welcome-page-title {
-  font-size: 50px;
-  font-weight: 700;
-  padding: 20px;
-  color: white;
-  text-shadow: 4px 4px #e8175d;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
 }
 
 .welcome-page-banner-container {
-  position: relative;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
 .banner-loading-bar {
-  position: absolute;
-  margin-top: 3em;
+    position: absolute;
 }
 
 .click-here-label {
-  cursor: pointer;
-  font-size: 30px;
-  font-weight: 400;
-  color: #fff;
-  text-shadow: 1px black;
-  visibility: hidden;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 400;
+    color: #fca311;
+    visibility: hidden;
 }
 
 .click-here-label.show {
-  visibility: visible;
+    visibility: visible;
 }
 
 .click-here-label.show:hover {
-  color: #e8175d;
+    color: white;
 }
 
 .nav-admin-page {
-  position: absolute;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 400;
-  color: #363636;
-  text-decoration: underline;
-  top: 0;
-  visibility: hidden;
+    position: absolute;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    text-decoration: underline;
+    top: 0;
+    visibility: hidden;
 }
 
 .nav-admin-page.show {
-  visibility: visible;
+    visibility: visible;
 }
 
 .nav-admin-page.show:hover {
-  color: #e8175d;
+    color: #fca311;
 }
 
 @media (max-width: 630px) {
-  .welcome-page-banner {
-    width: 100%;
-  }
-}
-
-body {
-  background-image: url("https://avatars.mds.yandex.net/get-pdb/2835025/992ec243-0def-4b57-82ec-4247ec4075ea/orig");
-  background-size: cover;
-   background-position: 0em -12em;
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-  box-shadow: inset 0 0 0 1000px rgba(52, 35, 45, 0.5);
-  position: absolute;
-  width: 100%;
-  height: 100%;
+    .welcome-page-banner {
+        width: 90%;
+    }
 }

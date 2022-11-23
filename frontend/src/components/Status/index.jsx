@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Image } from "react-bootstrap";
+import { checkIfSink } from "../../helpers";
 import NewGameButton from "./NewGameButton";
 import shipImg1 from '../../assets/img/ship1.png';
 import shipImg2 from '../../assets/img/ship2.png';
@@ -13,8 +14,8 @@ import discoveredShipImg4 from '../../assets/img/discovered_ship4.png';
 import discoveredShipImg5 from '../../assets/img/discovered_ship5.png';
 import './style.css';
 
-const StatusBoard = ({ newGame }) => {
-    const [selectedEmoji, setSelectedEmoji] = useState({ id: 1, activeStyle: true });
+const StatusBoard = ({ newGame, myState: { placedShips, shot, sendEmoji, emojiId } }) => {
+    const [selectedEmoji, setSelectedEmoji] = useState({ id: emojiId, activeStyle: true });
     const shipInfos = [
         {
             discovered: discoveredShipImg1,
@@ -37,10 +38,16 @@ const StatusBoard = ({ newGame }) => {
             nondiscovered: shipImg5
         }
     ];
-    const discoveredShip = [false, false, true, false, true];
+    const handleSendEmoji = (id) => {
+        setSelectedEmoji({ id, activeStyle: true });
+        sendEmoji(id);
+    }
+    const discoveredShip = placedShips.map(({ coordinates }) =>
+        checkIfSink(coordinates, shot)
+    );
     const emojis = [`🤫`, `🤩`, `😡`, `😥`];
     useEffect(() => {
-        setTimeout(() => setSelectedEmoji({ id: selectedEmoji.id, activeStyle: !selectedEmoji.activeStyle }), 1000);
+        setTimeout(() => setSelectedEmoji({ id: emojiId, activeStyle: !selectedEmoji.activeStyle }), 1000);
     }, [selectedEmoji]);
     return (
         <div className="game-status-container">
@@ -58,7 +65,7 @@ const StatusBoard = ({ newGame }) => {
                     {
                         emojis.map((item, i) => {
                             return (
-                                <span key={i} className={`emoji-span ${(selectedEmoji.id === i && selectedEmoji.activeStyle) && `active`}`} role="img" aria-label="sheep">{item}</span>
+                                <span key={i} onClick={() => handleSendEmoji(i)} className={`emoji-span ${(selectedEmoji.id === i && selectedEmoji.activeStyle) && `active`}`} role="img" aria-label="sheep">{item}</span>
                             )
                         })
                     }

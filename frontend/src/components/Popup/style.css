@@ -1,0 +1,41 @@
+.popup {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.popup-message {
+  color: #fff;
+  font-size: 5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.score {
+  color: #fff;
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 400;
+}

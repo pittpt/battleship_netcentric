@@ -4,7 +4,7 @@
 }
 
 .row-column-label {
-  color: rgba(225, 223, 223, 0.9);
+  color: #14213d;
 }
 
 .row-column {
@@ -22,7 +22,6 @@
   align-items: center;
   justify-content: center;
   font-size: 0.8em;
-  text-transform: lowercase;
 }
 
 .coordinate-label-row {
@@ -35,8 +34,7 @@
 }
 
 .coordinate {
-  border: 0.05em solid rgb(255, 255, 255);
-  border-radius: 0.5em;
+  border: 0.15em solid #ffffff;
 }
 
 .coordinate > .row > .square:first-child {
@@ -53,8 +51,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 0.05em solid #c9c9c9;
-  border-left: 0.05em solid #c9c9c9;
+  border-top: 0.15em solid #ffffff;
+  border-left: 0.15em solid #ffffff;
 }
 
 .row {
@@ -62,22 +60,21 @@
 }
 
 .carrier {
-  background-color: #33a9ac;
+  background-color: #264653;
   color: #fff;
 }
 
 .battleship {
-  background-color: #da2864;
+  background-color: #2a9d8f;
   color: #fff;
 }
 
 .cruiser {
-  background-color: #f7ad19;
-  color: #fff;
+  background-color: #e9c46a;
 }
 
 .submarine {
-  background-color: #982062;
+  background-color: #f4a261;
   color: #fff;
 }
 
