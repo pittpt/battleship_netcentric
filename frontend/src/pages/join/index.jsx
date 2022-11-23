@@ -70,7 +70,7 @@ const JoinPageForms = () => {
                     <div className='page-content-tab-wrapper'>
                         <p className='player-status-label'>Overall Online Player: {numOnlineClients}</p>
                         <p className='label-content'>Enter Your Name:</p>
-                        <input type='text' placeholder='Enter your name...' className='player-name-input' onKeyDown={(e) => { handleWaitingFlagByKey(e) }} onChange={(e) => handlePlayerName(e)} value={playerName} />
+                        <input type='text' placeholder='...' className='player-name-input' onKeyDown={(e) => { handleWaitingFlagByKey(e) }} onChange={(e) => handlePlayerName(e)} value={playerName} />
                         <button className='main-button' onClick={() => handleWaitingFlag()}>New Game</button>
                     </div>
                     :
