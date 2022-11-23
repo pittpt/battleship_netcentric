@@ -2,7 +2,7 @@ button {
   font-family: "Press Start 2P";
   padding: 15px 25px;
   font-size: 28px;
-  color: #e8175d;
+  color: #8a8a8a;
   border: none;
   cursor: pointer;
   background-color: transparent;
@@ -11,7 +11,7 @@ button {
 button:hover span {
   padding-right: 25px;
   background-color: transparent;
-  color: #fbfbfb;
+  color: #e8175d;
 }
 
 .button:hover span:after {
