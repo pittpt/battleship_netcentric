@@ -4,7 +4,6 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 import bannerImg from "../../assets/img/battleship_war_banner.jpg";
-import backgroundGif from "../../assets/img/giphy.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay ,
