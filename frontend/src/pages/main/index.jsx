@@ -6,14 +6,14 @@ import Heading from "../../components";
 import useGame from "../../hooks/useGame";
 
 const MainPage = () => {
-    const { myState, opponentState, logState } = useGame();
+    const { myState, opponentState, logState, gameState } = useGame();
 
     const { messages, newGame } = logState;
 
     return (
         <>
             <Heading />
-            <Display {...{ myState, opponentState, newGame }} />
+            <Display {...{ myState, opponentState, newGame, gameState }} />
             <LogList {...{ messages }} />
         </>
     );

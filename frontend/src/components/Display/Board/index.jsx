@@ -1,10 +1,8 @@
-import React from 'react';
-import Coordinate from './Coordinate';
-import ShipList from './ShipList';
-import Overlay from './Overlay';
-import './Board.css';
-import { useEffect } from 'react';
-import { yourName } from '../../../helpers';
+import React from "react";
+import Coordinate from "./Coordinate";
+import ShipList from "./ShipList";
+import Overlay from "./Overlay";
+import "./Board.css";
 
 const Board = ({ state }) => {
   const {
@@ -21,13 +19,11 @@ const Board = ({ state }) => {
     active,
   } = state;
 
-  const boardClass = active ? 'board active' : 'board';
+  const boardClass = active ? "board active" : "board";
 
   const coordinate = (
     <div className={boardClass}>
-      <h4 style={{ color: 'white' }}>
-        {title === 'My Board' && yourName ? `${yourName}'s board` : title}
-      </h4>
+      <h3>{title}</h3>
       <Coordinate {...{ placedShips, clickTile, chosenTiles, shot, myBoard }} />
     </div>
   );
@@ -58,10 +54,10 @@ const Board = ({ state }) => {
   );
 
   return (
-    <div className="whole-board">
-      {board}
-      <Overlay settings={overlaySettings} />
-    </div>
+      <div className="whole-board">
+        {board}
+        <Overlay settings={overlaySettings} />
+      </div>
   );
 };
 

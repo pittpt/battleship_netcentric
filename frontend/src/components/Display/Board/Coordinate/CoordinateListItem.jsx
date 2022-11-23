@@ -1,6 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAnchor, faFerry, faCircleXmark, faBomb  } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAnchor,
+  faFerry,
+  faCircleXmark,
+  faBomb,
+} from "@fortawesome/free-solid-svg-icons";
 import { MISSED, SELECTED, CONFIRMED, HIT } from "../../../../constants";
 
 const CoordinateListItem = ({ clickHandler, state }) => {

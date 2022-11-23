@@ -13,7 +13,7 @@ import discoveredShipImg4 from '../../assets/img/discovered_ship4.png';
 import discoveredShipImg5 from '../../assets/img/discovered_ship5.png';
 import './style.css';
 
-const StatusBoard = ({ newGame }) => {
+const StatusBoard = ({ score, newGame }) => {
     const [selectedEmoji, setSelectedEmoji] = useState({ id: 1, activeStyle: true });
     const shipInfos = [
         {
@@ -45,14 +45,18 @@ const StatusBoard = ({ newGame }) => {
     return (
         <div className="game-status-container">
             <div className="game-status-wrapper">
-                <div className="game-status-items-wrapper">
-                    {
-                        discoveredShip.map((item, i) => {
-                            return (
-                                <Image key={i} src={item ? shipInfos[i].discovered : shipInfos[i].nondiscovered} style={{ padding: '5px 0' }} />
-                            )
-                        })
-                    }
+                <div 
+                    style={{
+                        width: '100%',
+                        height: '50%',
+                        textAlign: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-evenly'
+                    }}
+                >
+                    <div style={{fontSize: 32}}>Score</div>
+                    <div style={{fontSize: 48}}>{score}</div>
                 </div>
                 <div className="emoji-container">
                     {

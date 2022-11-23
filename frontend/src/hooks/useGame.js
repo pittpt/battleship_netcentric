@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 import {
   checkIfSameCoordinate,
   makeNewMessages,
@@ -12,6 +12,8 @@ import {
   findSinkShipNameOfCoordinate,
   makeMsgForSinkShip,
   makeMsgForShot,
+  countScore,
+  tossCoin,
 } from "../helpers";
 import {
   NEW_OPPONENT,
@@ -41,16 +43,20 @@ import {
   SHOT,
   OPPONENT_SHOT,
   END,
+  OPPONENT_TIMEOUT,
+  TIMEOUT,
+  SET_TURN
 } from "../constants";
 
-const socket = io("http://localhost:4000", { transports: ["websocket"] });
+const socket = io("localhost:4000", { transports: ['websocket'] });
 const useGame = () => {
   const reducers = {
-    [NEW_OPPONENT](state, { opponent }) {
+    [NEW_OPPONENT](state, { opponent, opponentName }) {
       const newGameState = opponent ? 1 : 0;
       return {
         ...state,
         opponent,
+        opponentName,
         gotInitialOpponent: true,
         gameState: newGameState,
       };
@@ -91,9 +97,9 @@ const useGame = () => {
       );
       const newChosenTiles = isSelected
         ? chosenTiles.filter(
-            (coordinate) =>
-              !checkIfSameCoordinate(coordinate, selectedCoordinate)
-          )
+          (coordinate) =>
+            !checkIfSameCoordinate(coordinate, selectedCoordinate)
+        )
         : chosenTiles.concat([selectedCoordinate]);
 
       return { ...state, chosenTiles: newChosenTiles };
@@ -153,22 +159,47 @@ const useGame = () => {
 
       const msgType = hasWon ? "end" : "shot";
       const newGameState = hasWon ? 5 : 4;
-      socket.emit(msgType, coordinate);
+      const newScore = countScore(opponentShips, newOpponentShipsShot)
+      socket.emit(msgType, coordinate, newScore);
 
       return {
         ...state,
         opponentShipsShot: newOpponentShipsShot,
         gameState: newGameState,
+        score: newScore
       };
     },
-    [OPPONENT_SHOT](state, { coordinate }) {
+    [OPPONENT_SHOT](state, { coordinate, opponentScore }) {
+      const newOpponentScore = opponentScore ? opponentScore : state.opponentScore 
       const { myShipsShot } = state;
       const newMyShipsShot = myShipsShot.concat([coordinate]);
       return {
         ...state,
+        opponentScore: newOpponentScore,
         myShipsShot: newMyShipsShot,
         gameState: 3,
       };
+    },
+    [TIMEOUT](state) {
+
+      socket.emit('opponentTimeOut', '1');
+
+      return {
+        ...state,
+        gameState: 4
+      }
+    },
+    [OPPONENT_TIMEOUT](state) {
+      return {
+        ...state,
+        gameState: 3
+      }
+    },
+    [SET_TURN](state, {gameState}) {
+      return {
+        ...state,
+        gameState
+      }
     },
     [END](state) {
       return { ...state, gameState: 6 };
@@ -180,6 +211,7 @@ const useGame = () => {
   };
 
   const [state, dispatch] = useReducer(reducer, initialState());
+  const [playerName, setPlayerName] = useState(localStorage.getItem(socket.id))
 
   const {
     gotInitialOpponent,
@@ -193,6 +225,9 @@ const useGame = () => {
     chosenTiles,
     opponentShipsShot,
     myShipsShot,
+    score,
+    opponentName,
+    opponentScore
   } = state;
 
   useEffect(() => {
@@ -200,22 +235,34 @@ const useGame = () => {
       console.log("connected to server");
     });
 
-    socket.on("opponent", (opponent) => {
-      dispatch({ opponent, type: NEW_OPPONENT });
+    socket.on("opponent", (opponent, opponentName) => {
+      dispatch({ opponent, opponentName, type: NEW_OPPONENT });
     });
 
     socket.on("opponentShips", (opponentShips) => {
       dispatch({ type: SET_OPPONENT_SHIPS, opponentShips });
     });
 
-    socket.on("shot", (coordinate) => {
-      dispatch({ type: OPPONENT_SHOT, coordinate });
+    socket.on("shot", (coordinate, opponentScore) => {
+      dispatch({ type: OPPONENT_SHOT, coordinate, opponentScore });
     });
 
-    socket.on("end", (coordinate) => {
-      dispatch({ type: OPPONENT_SHOT, coordinate });
+    socket.on("end", (coordinate, opponentScore) => {
+      dispatch({ type: OPPONENT_SHOT, coordinate, opponentScore });
       dispatch({ type: END });
     });
+
+    socket.on("opponentTimeOut", () => {
+      dispatch({ type: OPPONENT_TIMEOUT })
+    });
+
+    socket.on("resetGame", () => {
+      dispatch({ type: NEW_GAME })
+    });
+
+    socket.on("setTurn", (gameState) => {
+      dispatch({ type: SET_TURN, gameState })
+    })
 
     return () => {
       socket.off("connect");
@@ -223,6 +270,9 @@ const useGame = () => {
       socket.off("opponentShips");
       socket.off("shot");
       socket.off("end");
+      socket.off('opponentTimeOut');
+      socket.off('resetGame');
+      socket.off('setTurn')
     };
   }, []);
 
@@ -233,8 +283,8 @@ const useGame = () => {
           ? MSG_HAVE_OPPONENT
           : INITIAL_MSG_HAVE_OPPONENT
         : haveSendInitialMsg
-        ? MSG_NO_OPPONENT
-        : INITIAL_MSG_NO_OPPONENT;
+          ? MSG_NO_OPPONENT
+          : INITIAL_MSG_NO_OPPONENT;
 
       dispatch({ type: NEW_MESSAGE, message });
       if (!opponent) dispatch({ type: OPPONENT_LEFT });
@@ -252,7 +302,10 @@ const useGame = () => {
         break;
       case 2:
         socket.emit("ships", myShips);
-        if (opponentShips) return dispatch({ type: OPPONENTS_TURN });
+        if (opponentShips) {
+          socket.emit('randomFirstPlayer')
+          return
+        }
         dispatch({ type: NEW_MESSAGE, message: MSG_OPPONENT_PLACING_SHIPS });
         break;
       case 3:
@@ -318,20 +371,27 @@ const useGame = () => {
     }
   }, [shipTilesState]);
 
-  const newGame = () => {
+  const newGame = (playerName) => {
+    if ( playerName?.length > 0 ){
+      setPlayerName(playerName)
+      localStorage.setItem(socket.id, playerName)
+      socket.emit("newGame", playerName);
+    }
+    else{
+      socket.emit("newGame");
+    }
     dispatch({ type: NEW_GAME });
-    socket.emit("newGame");
   };
 
   const showOpponentOverlay =
     gameState === 0
       ? MSG_WAITING_FOR_PLAYER
       : !opponentShips
-      ? MSG_OPPONENT_PLACING_SHIPS
-      : null;
+        ? MSG_OPPONENT_PLACING_SHIPS
+        : null;
 
-  const showMyOverlay =
-    gameState === 5 ? MSG_WIN : gameState === 6 ? MSG_LOSE : null;
+  const showMyOverlay = null
+    // gameState === 5 ? MSG_WIN : gameState === 6 ? MSG_LOSE : null;
 
   const showConfirmCancelButtons = gameState === 1;
 
@@ -352,6 +412,10 @@ const useGame = () => {
     };
   };
 
+  const timeOut = () => {
+    dispatch({ type: TIMEOUT })
+  }
+
   const confirmTiles = () => dispatch({ type: CONFIRM_TILES });
 
   const logState = { messages, newGame };
@@ -360,27 +424,32 @@ const useGame = () => {
     myBoard: true,
     placedShips: myShips,
     overlaySettings: showMyOverlay,
-    title: "My Board",
+    title: playerName ? `${playerName}'s Board` : "Your Board",
     showConfirmCancelButtons,
     clearTiles,
     clickTile: clickTile(true),
+    timeOut,
     chosenTiles,
     confirmTiles,
     shot: myShipsShot,
     active: gameState === 4,
+    score,
+    playerName
   };
 
   const opponentState = {
     placedShips: opponentShips,
     overlaySettings: showOpponentOverlay,
-    title: "Opponent's Board",
+    title: `${opponentName?.length > 0 ? opponentName : "Opponent"}'s Board`,
     clickTile: clickTile(),
     chosenTiles: [],
     shot: opponentShipsShot,
     active: gameState === 3,
+    playerName: opponentName,
+    score: opponentScore
   };
 
-  return { logState, myState, opponentState };
+  return { logState, myState, opponentState, gameState, socket };
 };
 
 export default useGame;

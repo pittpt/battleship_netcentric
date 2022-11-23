@@ -20,11 +20,9 @@ const ShipList = ({
   return (
     <div className={className}>
       <div>{lst}</div>
-      <div style={{justifyContent : "center" }}>
-        {showConfirmCancelButtons && (
-          <TileButtons {...{ clearTiles, confirmTiles }} />
-        )}
-      </div>
+      {showConfirmCancelButtons && (
+        <TileButtons {...{ clearTiles, confirmTiles }} />
+      )}
     </div>
   );
 };

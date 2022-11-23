@@ -2,6 +2,8 @@ import { getCurrentTime } from "./helpers";
 
 export const columnLabel = "ABCDEFGHIJ";
 
+export const SECS_PER_ROUND = 10
+
 export const NEW_OPPONENT = "NEW_OPPONENT";
 export const NEW_MESSAGE = "NEW_MESSAGE";
 export const OPPONENT_LEFT = "OPPONENT_LEFT";
@@ -15,6 +17,9 @@ export const OPPONENTS_TURN = "OPPONENTS_TURN";
 export const SHOT = "SHOT";
 export const OPPONENT_SHOT = "OPPONENT_SHOT";
 export const END = "END";
+export const OPPONENT_TIMEOUT = "OPPONENT_TIMEOUT";
+export const TIMEOUT = "TIMEOUT";
+export const SET_TURN = "SET_TURN";
 
 export const MISSED = "MISSED";
 export const SELECTED = "SELECTED";
@@ -64,5 +69,8 @@ export const initialState = () => {
     opponent: undefined,
     gotInitialOpponent: false,
     haveSendInitialMsg: false,
+    score: 0,
+    opponentName: "OPPONENT",
+    opponentScore: 0
   };
 };

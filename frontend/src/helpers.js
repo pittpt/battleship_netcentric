@@ -1,7 +1,7 @@
-import moment from 'moment';
-import { columnLabel } from './constants';
+import moment from "moment";
+import { columnLabel } from "./constants";
 
-export const getCurrentTime = () => moment().format('LTS');
+export const getCurrentTime = () => moment().format("LTS");
 
 export const getLastElm = (arr) => {
   const length = arr.length;
@@ -49,6 +49,26 @@ export const isWinner = (ships, shot) => {
   return true;
 };
 
+export const countScore = (ships, shot) => {
+  let score = 0
+  for (const { coordinates } of ships) {
+    let isHitAll = true
+    for (const coordinate of coordinates) {
+      const isHit = checkIfLstIncludesCoordinate(shot, coordinate);
+      if ( isHit ){
+        score += 1;
+      }
+      else {
+        isHitAll = false
+      }
+    }
+    if ( isHitAll ){
+      score += 5;
+    }
+  }
+  return score;
+}
+
 export const whichShipCoordinateIsBelong = (ships, checkCoordinate) => {
   for (const index in ships) {
     const { coordinates, name } = ships[index];
@@ -93,15 +113,15 @@ export const makeMsgForSelectingTiles = (name, numOfTiles) => {
 
 export const makeMsgForSinkShip = (isMine, shipName) => {
   const [subject, object] = isMine
-    ? ['You', "opponent's"]
-    : ['Opponent', 'your'];
+    ? ["You", "opponent's"]
+    : ["Opponent", "your"];
   return `${subject} has sunk ${object} ${shipName}.`;
 };
 
 export const makeMsgForShot = (isMine, ships, coordinate) => {
   const isHit = whichShipCoordinateIsBelong(ships, coordinate);
-  const subject = isMine ? 'You' : 'Opponent';
-  const result = isHit ? 'HIT!' : 'MISSED.';
+  const subject = isMine ? "You" : "Opponent";
+  const result = isHit ? "HIT!" : "MISSED.";
   const { row, column } = coordinate;
   const columnLetter = columnLabel[column];
   const rowNum = row + 1;
@@ -123,9 +143,6 @@ export const validateShipTiles = (chosenTiles, var1, var2) => {
   return true;
 };
 
-let yourName = '';
-export function setYourName(name) {
-  yourName = name;
+export const tossCoin = () => {
+  return Math.random() > 0.5
 }
-
-export { yourName };

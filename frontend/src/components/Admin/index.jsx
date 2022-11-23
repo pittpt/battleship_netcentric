@@ -1,3 +1,4 @@
+import io from "socket.io-client";
 import React, { useState } from "react";
 import { Image } from "react-bootstrap";
 import { MdClose } from 'react-icons/md';
@@ -81,9 +82,17 @@ const AdminPageComponent = () => {
             ]
         }
     ];
+
     const handleSelRoomNum = (event) => {
         setSelRoomNum(event.target.value);
     }
+
+    const handleResetGame = () => {
+        const socket = io("localhost:4000", { transports: ['websocket'] });
+        socket.emit('resetGame', '1')
+        socket.off('resetGame');
+    }
+
     return (
         <div className="admin-page-container">
             <div className="room-number-container">
@@ -116,7 +125,12 @@ const AdminPageComponent = () => {
                     })
                 }
             </div>
-            <button className='main-button danger'>Reset Game</button>
+            <button 
+                className='main-button danger'
+                onClick={handleResetGame}
+            >
+                Reset Game
+            </button>
         </div>
     )
 }

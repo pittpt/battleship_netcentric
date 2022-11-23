@@ -1,6 +1,6 @@
 import { clientKey } from "../helpers/index.js";
 
-const client = (clients, socket, io) => {
+const client = (clients, clientNames, socket, io) => {
   const getSocketById = (id) => io.sockets.sockets.get(id);
 
   const addClient = (avoidOpponent) => {
@@ -12,7 +12,7 @@ const client = (clients, socket, io) => {
         clients[otherSocketId] = socket.id;
         clients[socket.id] = otherSocketId;
         i = key.length;
-        getSocketById(otherSocketId).emit("opponent", socket.id);
+        getSocketById(otherSocketId).emit("opponent", socket.id, clientNames[socket.id]);
       }
     }
     const key2 = clientKey(clients);
@@ -20,7 +20,8 @@ const client = (clients, socket, io) => {
       clients[socket.id] = null;
     }
     //important
-    socket.emit("opponent", clients[socket.id]);
+    const opponentSocketId = clients[socket.id]
+    socket.emit("opponent", opponentSocketId, clientNames[opponentSocketId]);
   };
 
   const removeClient = () => {
@@ -32,14 +33,17 @@ const client = (clients, socket, io) => {
     delete clients[socket.id];
   };
 
-  const newSession = () => {
+  const newSession = (playerName) => {
     const opponent = clients[socket.id];
     removeClient();
     addClient(opponent);
+    if ( playerName ){
+      clientNames[socket.id] = playerName
+    }
   };
 
-  const terminateSession = (position) => {
-    getSocketById(clients[socket.id]).emit("end", position);
+  const terminateSession = (position, score) => {
+    getSocketById(clients[socket.id]).emit("end", position, score);
   };
 
   return { addClient, removeClient, newSession, terminateSession };
