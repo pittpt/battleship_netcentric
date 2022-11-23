@@ -3,12 +3,11 @@
   color: #ffffff;
   position: relative;
   text-align: center;
-  min-width: 7.5em;
+  min-width: 8em;
   display: flex;
   flex-direction: column;
-  /* border: 0.5px solid #da2864; */
   justify-content: space-between;
-  margin: 0em 1.7em;
+  margin: 0em 1.4em;
 }
 
 .ship-list > div > div {
@@ -36,7 +35,7 @@
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 10px 15px;
+  padding: 10px 10px;
   background-color: #e8175d;
 }
 
@@ -47,7 +46,7 @@
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 10px 15px;
   background-color: #e8175d;
 }
 
